@@ -7,17 +7,52 @@
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #1c0e2d;
-      --text: #e6dff7;
-      --accent: #9a4ef3;
+      --text: #f3ebff;
+      --accent: #c78bfd;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--text);
     }
 
     body {
-      margin: 0;
-      font-family: 'Montserrat', sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      position: relative;
       overflow-x: hidden;
+    }
+
+    .bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background-size: cover;
+      background-position: center;
+      animation: bgCycle 20s infinite alternate ease-in-out;
+    }
+
+    @keyframes bgCycle {
+      0% { background-image: url('bg1.jpg'); }
+      100% { background-image: url('bg2.jpg'); }
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(28, 14, 45, 0.75);
+      z-index: -1;
     }
 
     header {
@@ -26,15 +61,16 @@
       font-family: 'Great Vibes', cursive;
       font-size: 3rem;
       color: var(--accent);
+      animation: fadeIn 2s ease-out;
     }
 
     .content {
       max-width: 800px;
       margin: auto;
-      padding: 1rem 2rem;
+      padding: 2rem;
       font-size: 1.1rem;
       line-height: 1.8;
-      backdrop-filter: blur(4px);
+      animation: fadeInUp 2.5s ease-out;
     }
 
     .letter p {
@@ -89,34 +125,30 @@
     }
 
     .reveal button:hover {
-      background: #7e35c9;
+      background: #a25fe1;
     }
 
     #secret {
       display: none;
       margin-top: 1.5rem;
       font-style: italic;
-      color: #ccc0f5;
+      color: #e1d7ff;
     }
 
-    .stars {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background: radial-gradient(circle at 20% 30%, #3d256b, transparent 60%),
-                  radial-gradient(circle at 80% 70%, #4b3082, transparent 60%);
-      animation: fade 10s infinite alternate;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    @keyframes fade {
-      0% { opacity: 0.8; }
-      100% { opacity: 1; }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <div class="stars"></div>
+  <div class="bg"></div>
+  <div class="overlay"></div>
 
   <header>
     Happy Birthday, Moonchild 🌒
@@ -144,9 +176,8 @@
     </div>
 
     <div class="gallery">
-      <img src="https://via.placeholder.com/180x240.png?text=You+%26+I" alt="Photo 1">
-      <img src="https://via.placeholder.com/180x240.png?text=Our+Moment" alt="Photo 2">
-      <img src="https://via.placeholder.com/180x240.png?text=The+Look" alt="Photo 3">
+      <img src="bg1.jpg" alt="Photo 1">
+      <img src="bg2.jpg" alt="Photo 2">
     </div>
 
     <div class="reveal">
